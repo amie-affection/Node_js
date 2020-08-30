@@ -18,7 +18,9 @@
     "url": "https://github.com/amie-affection/Node_js-basic/issues"
   },
   "homepage": "https://github.com/amie-affection/Node_js-basic#readme",
-  "dependencies": {},
+  "dependencies": {
+    "yargs": "^15.4.1"
+  },
   "devDependencies": {
     "nodemon": "^2.0.4"
   }
