@@ -35,7 +35,7 @@ exports.CRUDServer = class CRUDServer {
     this.app.use((err, req, res, next) => {
       const status = err.status || 500;
 
-      return res.status(status.send(err.message));
+      return res.status(status).json({message: err.message});
     });
   }
 

@@ -2,15 +2,13 @@ const uuid = require("uuid");
 
 const contacts = [];
 
-exports.ContactModel = class ContactModel {
+exports.contactsModel = {
   addContact(contactParams) {
     const id = uuid.v4();
 
-    const contactAdd = contacts.push({ ...contactParams, id });
-    contacts.push(contactAdd);
+    const newContact = contacts.push({ ...contactParams, id });
+    contacts.push(newContact);
 
-    return contactAdd;
-  }
+    return newContact;
+  },
 };
-
-exports.ContactModel = new ContactModel();
