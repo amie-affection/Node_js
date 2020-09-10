@@ -1,4 +1,5 @@
 const path = require("path");
+const cors = require("cors");
 require("dotenv").config({ path: path.join(__dirname, "../.env") });
 
 const express = require("express");
@@ -23,10 +24,11 @@ exports.CRUDServer = class CRUDServer {
 
   initMiddlewares() {
     this.app.use(express.json());
+    this.app.use(cors({origin: process.env.ALLOWED_ORIGIN}));
   }
 
-    initRoutes() {
-      this.app.use('/contacts', contactsRouter)
+  initRoutes() {
+    this.app.use("/contacts", contactsRouter);
   }
 
   initErrorHandling() {
