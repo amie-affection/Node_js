@@ -2,7 +2,13 @@
 const { Router } = require("express");
 const Joi = require("joi");
 const { validate } = require("../helpers/validate");
-const { addContact } = require("./contacts.controller");
+const {
+  addContact,
+  getContacts,
+  getContact,
+  updateContact,
+  deleteContact,
+} = require("./contacts.controller");
 
 const router = Router();
 
@@ -14,5 +20,21 @@ const addContactSchema = Joi.object({
 });
 
 router.post("/", validate(addContactSchema), addContact);
+
+// 2. Read
+router.get("/", getContacts);
+
+router.get("/:contactId", getContact);
+
+// 3. Update
+const updateContactSchema = Joi.object({
+  email: Joi.string(),
+  username: Joi.string(),
+}).min(1);
+
+router.put("/:contactId", validate(updateContactSchema), updateContact);
+
+// 4. Delete
+router.delete('/:contactId', deleteContact);
 
 exports.contactsRouter = router;
